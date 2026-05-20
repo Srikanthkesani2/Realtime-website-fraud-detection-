@@ -1,0 +1,6 @@
+#!/Users/kesanisrikanthreddy/Real-Time-Website-Threat-Detection/.venv/bin/python
+import sys
+from choreographer.cli._cli_utils import get_chrome_cli
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(get_chrome_cli())

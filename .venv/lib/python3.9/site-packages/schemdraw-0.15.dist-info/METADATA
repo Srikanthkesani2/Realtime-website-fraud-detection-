@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: schemdraw
+Version: 0.15
+Summary: Electrical circuit schematic drawing
+Home-page: https://schemdraw.readthedocs.io/
+Author: Collin J. Delker
+Author-email: schemdraw@collindelker.com
+License: UNKNOWN
+Project-URL: Source, https://bitbucket.org/cdelker/schemdraw
+Keywords: circuit,schematic,electrical,flowchart,logic
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: End Users/Desktop
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: typing-extensions ; python_version < "3.8"
+Provides-Extra: matplotlib
+Requires-Dist: matplotlib (>=3) ; extra == 'matplotlib'
+Provides-Extra: svgmath
+Requires-Dist: ziafont (>=0.4) ; extra == 'svgmath'
+Requires-Dist: ziamath (>=0.6) ; extra == 'svgmath'
+Requires-Dist: latex2mathml ; extra == 'svgmath'
+
+# schemdraw
+
+Schemdraw is a python package for producing high-quality electrical circuit schematic diagrams. Typical usage:
+
+```python
+import schemdraw
+import schemdraw.elements as elm
+with schemdraw.Drawing(file='schematic.svg') as d:
+    d += elm.Resistor().label('100KΩ')
+    d += elm.Capacitor().down().label('0.1μF', loc='bottom')
+    d += elm.Line().left()
+    d += elm.Ground()
+    d += elm.SourceV().up().label('10V')
+```
+
+Included are symbols for basic electrical components (resistors, capacitors, diodes, transistors, etc.), opamps and signal processing elements. Additionally, Schemdraw can produce digital timing diagras, state machine diagrams, and flowcharts.
+
+Documentation is available at [readthedocs](https://schemdraw.readthedocs.io)
+
+The most current version can be found in the [source code git repository](https://bitbucket.org/cdelker/schemdraw).
+
+
